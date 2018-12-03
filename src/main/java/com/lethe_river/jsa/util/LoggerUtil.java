@@ -1,6 +1,7 @@
 package com.lethe_river.jsa.util;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
@@ -30,6 +31,11 @@ public final class LoggerUtil {
 		}
 
 		ConsoleHandler consoleHandler = new ConsoleHandler();
+		try {
+			consoleHandler.setEncoding("UTF-8");
+		} catch (SecurityException | UnsupportedEncodingException e) {
+			throw new RuntimeException(e);
+		}
 		consoleHandler.setLevel(Level.WARNING);
 		logger.addHandler(consoleHandler);
 
