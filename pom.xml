@@ -43,7 +43,24 @@
   </dependencies>
   
   <build>
-    <sourceDirectory>src</sourceDirectory>
+    <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+    <resources>
+      <resource>
+        <filtering>false</filtering>
+        <directory>${basedir}/src/main/resources</directory>
+      </resource>
+    </resources>
+    
+    <testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
+    <testResources>
+      <testResource>
+        <filtering>false</filtering>
+        <directory>${basedir}/src/test/resources</directory>
+      </testResource>
+    </testResources>
+    <outputDirectory>${basedir}/target/classes</outputDirectory>
+    <testOutputDirectory>${basedir}/target/test-classes</testOutputDirectory>
+    <directory>${basedir}/target</directory>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
