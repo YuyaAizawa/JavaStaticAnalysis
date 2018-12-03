@@ -25,6 +25,10 @@ public class SourceProcessor {
 	private final List<Path> libraryDirectories;
 
 	public SourceProcessor(List<String> sourceDirectories, List<String> libraryDirectories) {
+
+		logger.fine("sourceDirectories:" + sourceDirectories);
+		logger.fine("libraryDirectories:" + libraryDirectories);
+
 		this.sourceDirectories = sourceDirectories
 				.stream()
 				.map(Paths::get)
@@ -36,9 +40,10 @@ public class SourceProcessor {
 	}
 
 	public void processSources(ASTVisitor visitor) {
+
 		ASTParser parser = ASTParser.newParser(AST.JLS10);
 		parser.setResolveBindings(true);
-		parser.setBindingsRecovery(true);
+		parser.setBindingsRecovery(false);
 
 		String[] libraries = libraryDirectories
 				.stream()
