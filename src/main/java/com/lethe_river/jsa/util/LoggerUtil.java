@@ -24,7 +24,7 @@ public final class LoggerUtil {
 		if(!dirPath.isEmpty()) {
 			FileHandler fileHandler;
 			try {
-				fileHandler = new FileHandler(getPattern(clazz), 4000, 100, false);
+				fileHandler = new FileHandler(getPattern(clazz), 8000, 100, false);
 				fileHandler.setFormatter(new SimpleFormatter());
 				fileHandler.setEncoding("UTF-8");
 				logger.addHandler(fileHandler);
