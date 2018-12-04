@@ -5,11 +5,9 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
-import org.eclipse.jdt.core.dom.EnumDeclaration;
 import org.eclipse.jdt.core.dom.IMethodBinding;
 import org.eclipse.jdt.core.dom.ITypeBinding;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
-import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 import com.lethe_river.jsa.util.LoggerUtil;
 
@@ -23,20 +21,6 @@ public class MethodDeclVisitor extends ASTVisitor {
 		} catch(MethodDeclBindingException e) {
 			logger.warning("binding cannot beresolved " + e.getMessage());
 		}
-		return super.visit(node);
-	}
-
-	@Override
-	public boolean visit(TypeDeclaration node) {
-		// 型を解決しておかないとネステしたクラスを解決できなくなる
-		node.resolveBinding();
-		return super.visit(node);
-	}
-
-	@Override
-	public boolean visit(EnumDeclaration node) {
-		// 型を解決しておかないとネステしたクラスを解決できなくなる
-		node.resolveBinding();
 		return super.visit(node);
 	}
 
